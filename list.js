@@ -11,6 +11,7 @@ class List {
   }
   clear() {
     this._dataStore = [];
+    this._listSize = 0;
   }
   find(val) {
     for (var i = 0; i < this._dataStore.length; i++) {
@@ -28,6 +29,18 @@ class List {
       return true;
     }
     return false;
+  }
+  toString() {
+    return this._dataStore;
+  }
+  insert(val, pos) { 
+    let insertPos = this.find(pos); 
+    if (insertPos > -1) {
+      this._dataStore.splice(insertPos + 1, 0, val);
+      ++this._listSize;
+      return true;
+    }
+    return false; 
   }
 }
 
