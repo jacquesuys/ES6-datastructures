@@ -1,5 +1,6 @@
 class List {
   constructor() {
+    this._pos = 0;
     this._listSize = 0;
     this._dataStore = [];
   }
@@ -41,6 +42,32 @@ class List {
       return true;
     }
     return false; 
+  }
+  // traversal
+  front() {
+    this._pos = 0;
+  }
+  end() {
+    this._pos = this._listSize - 1;
+  }
+  prev() {
+    if (this._pos > 0) {
+      --this._pos;
+    }
+  }
+  next() {
+    if (this._pos < this._listSize - 1) {
+      ++this._pos;
+    }
+  }
+  currPos() {
+    return this._pos;
+  }
+  moveTo(pos) {
+    this._pos = pos;
+  }
+  getElement() {
+    return this._dataStore[this._pos];
   }
 }
 
