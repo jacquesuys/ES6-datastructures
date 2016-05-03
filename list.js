@@ -70,5 +70,3 @@ class List {
     return this._dataStore[this._pos];
   }
 }
-
-var list = new List();
