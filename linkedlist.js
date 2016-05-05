@@ -11,7 +11,7 @@ class LinkedList {
     this.tail = null;
   }
   insert(val) {
-    var node = new Node(val);
+    let node = new Node(val);
     if (!this.head) {
       this.head = node;
     }
@@ -26,12 +26,12 @@ class LinkedList {
     if (!this.head) {
       return null;
     }
-    var removed = this.head;
+    let removed = this.head;
     this.head = this.head.next;
     return removed.value;
   }
   contains(val) {
-    var current = this.head;
+    let current = this.head;
     while (current) {
       if (current.value == val) {
         return true;
