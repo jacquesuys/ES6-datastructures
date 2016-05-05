@@ -31,12 +31,12 @@ class LinkedList {
     return removed.value;
   }
   contains(val) {
-    var node = this.head;
-    while (node) {
-      if (node.value == val) {
+    var current = this.head;
+    while (current) {
+      if (current.value == val) {
         return true;
       }
-      node = node.next;
+      current = current.next;
     }
     return false;
   }
