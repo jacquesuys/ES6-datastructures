@@ -24,16 +24,16 @@ class LinkedList {
     }
     return current;
   }
-  insert(val, target) {
+  insert(val, item) {
     let node = new Node(val);
-    let existing = this.find(target);
-    node.next = existing.next;
-    existing.next = node;
+    let target = this.find(item);
+    node.next = target.next;
+    target.next = node;
   }
-  remove(target) {
-    let prev = this.findPrevious(target);
-    if (prev.next !== null) {
-      prev.next = prev.next.next;
+  remove(item) {
+    let target = this.findPrevious(item);
+    if (target.next !== null) {
+      target.next = target.next.next;
     }
   }
 }
