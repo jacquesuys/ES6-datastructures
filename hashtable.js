@@ -16,7 +16,7 @@ class HashTable {
   show(){
     for (let i = 0; i < this.hashTable.length; i++) {
       if (this.hashTable[i]) {
-        console.log(i + ' : ' + this.keyhashTable[key]);
+        console.log(i + ' : ' + this.hashTable[i]);
       }
     }
   }
