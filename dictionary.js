@@ -16,4 +16,11 @@ class Dictionary {
       console.log(key + ' -> ' + this.dataStore[key]);
     }
   }
+  count() {
+    var count = 0;
+    for(var key in this.dataStore){
+      ++count;
+    }
+    return count;
+  }
 }
