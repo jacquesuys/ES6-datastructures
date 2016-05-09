@@ -1,10 +1,14 @@
 class HashTable {
   constructor() {
-    this.hashTable = new Array(137);
+    this.table = new Array(137);
   }
-  put(val){
+  put(val) {
     let hash = this.hashing(val);
-    this.hashTable[hash] = val;
+    this.table[hash] = val;
+  }
+  get(val) {
+    let hash = this.hashing(val);
+    return this.table[hash];
   }
   hashing(str) {
     const H = 37;
@@ -18,10 +22,10 @@ class HashTable {
     }
     return parseInt(total);
   }
-  show(){
-    for (let i = 0; i < this.hashTable.length; i++) {
-      if (this.hashTable[i]) {
-        console.log(i + ' : ' + this.hashTable[i]);
+  show() {
+    for (let i = 0; i < this.table.length; i++) {
+      if (this.table[i]) {
+        console.log(i + ' : ' + this.table[i]);
       }
     }
   }
