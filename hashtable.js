@@ -6,7 +6,7 @@ class HashTable {
     let hash = this.hashing(key);
     let exists = false;
     this.table[hash] = this.table[hash] || [];
-    for (let i = 0; i < this.table[hash]; i++) {
+    for (let i = 0; i < this.table[hash].length; i++) {
       if (this.table[hash][i][0] === key) {
         this.table[hash][i][1] = val;
         exists = true;
@@ -38,8 +38,8 @@ class HashTable {
     }
   }
   hashing(str) {
-    var hash = 0;
-    for (var i = 0; i < str.length; i++) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
       hash = (hash<<5) + hash + str.charCodeAt(i);
       hash = hash & hash; // Convert to 32bit integer
       hash = Math.abs(hash);
@@ -47,11 +47,10 @@ class HashTable {
     return hash % this.table.length;
   }
   show() {
-    for (let i = 0; i < this.table.length; i++) {
-      if (this.table[i] !== undefined && this.table[i].length > 0) {
-        for (let j = 0; j < this.table[i][j].length; j++) {
-          console.log(`${this.table[i][j][0]} -> ${this.table[i][j][1]}`);
-        }
+    for (let key in this.table) {
+      console.log(`${key}:`);
+      for (let i = 0; i < this.table[key].length; i++) {
+        console.log(`${i} -> ${this.table[key][i]}`);
       }
     }
   }
