@@ -6,12 +6,17 @@ class HashTable {
     let hash = this.hashing(val);
     this.hashTable[hash] = val;
   }
-  hashing(data) {
+  hashing(str) {
+    const H = 37;
     let total = 0;
-    for(let i = 0; i < data.length; i++) {
-      total += data.charCodeAt(i);
+    for (let i = 0; i < str.length; i++) {
+      total += H * total + str.charCodeAt(i);
     }
-    return total % this.hashTable.length;
+    total = total % this.table.length; 
+    if (total < 0) {
+      total += this.table.length - 1;
+    }
+    return parseInt(total);
   }
   show(){
     for (let i = 0; i < this.hashTable.length; i++) {
