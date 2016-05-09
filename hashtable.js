@@ -1,22 +1,54 @@
 class HashTable {
   constructor() {
-    this.hashTable = new Array(137);
+    this.table = new Array(137);
+    this.makeChains();
   }
-  put(val){
-    let hash = this.hashing(val);
-    this.hashTable[hash] = val;
-  }
-  hashing(data) {
-    let total = 0;
-    for(let i = 0; i < data.length; i++) {
-      total += data.charCodeAt(i);
+  makeChains() {
+    for (let i = 0; i < this.table.length; i++) {
+      this.table[i] = [];
     }
-    return total % this.hashTable.length;
   }
-  show(){
-    for (let i = 0; i < this.hashTable.length; i++) {
-      if (this.hashTable[i]) {
-        console.log(i + ' : ' + this.hashTable[i]);
+  put(val) {
+    let pos = this.hashing(val);
+    let index = 0;
+    if (this.table[pos][index] === undefined) {
+      this.table[pos][index++] = val;
+    } else {
+      while (this.table[pos][index]) { 
+        ++index;
+      }
+      this.table[pos][index] = val;
+    }
+  }
+  get(val) {
+    let pos = this.hashing(val);
+    let index = 0;
+    if (this.table[pos][index] === val) {
+      return this.table[pos][index];
+    } else {
+      while (this.table[pos][index] !== val && this.table[pos][index] !== undefined) {
+        ++index;
+      }
+      return this.table[pos][index];
+    }
+    return undefined;
+  }
+  hashing(str) {
+    const H = 37;
+    let total = 0;
+    for (let i = 0; i < str.length; i++) {
+      total += H * total + str.charCodeAt(i);
+    }
+    total = total % this.table.length; 
+    if (total < 0) {
+      total += this.table.length - 1;
+    }
+    return parseInt(total);
+  }
+  show() {
+    for (let i = 0; i < this.table.length; i++) {
+      if (this.table[i]) {
+        console.log(`${i} : ${this.table[i]}`);
       }
     }
   }
