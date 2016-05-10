@@ -23,10 +23,8 @@ class HashTable {
     return parseInt(total);
   }
   show() {
-    for (let i = 0; i < this.table.length; i++) {
-      if (this.table[i]) {
-        console.log(i + ' : ' + this.table[i]);
-      }
+    for (let key in this.table) {
+      console.log(`${key} : ${this.table[key]}`);
     }
   }
 }
