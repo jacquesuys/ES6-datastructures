@@ -43,7 +43,7 @@ class BinaryTree {
   }
   contains(target) {
     let current = this.root;
-    while (current.value) {
+    while (true) {
       if (current.value === target) {
         return true;
       } else if (target < current.value && current.left !== null) {
@@ -57,5 +57,4 @@ class BinaryTree {
     }
     return false;
   }
-}
 }
