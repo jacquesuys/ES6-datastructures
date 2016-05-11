@@ -41,4 +41,21 @@ class BinaryTree {
       }
     }
   }
+  contains(target) {
+    let current = this.root;
+    while (current.value) {
+      if (current.value === target) {
+        return true;
+      } else if (target < current.value && current.left !== null) {
+        current = current.left;
+        continue;
+      } else if (target > current.value && current.right !== null) {
+        current = current.right;
+        continue;
+      }
+      break;
+    }
+    return false;
+  }
+}
 }
