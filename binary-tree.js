@@ -20,20 +20,22 @@ class BinaryTree {
       this.root = node;
     } else {
       let current = this.root;
-      while (current !== null) {
+      while (true) {
         if (val < current.value) {
           if (current.left === null) {
             current.left = node;
-            current = null;
+            break;
           } else {
             current = current.left;
+            continue;
           }
         } else {
           if (current.right === null) {
             current.right = node;
-            current = null;
+            break;
           } else {
             current = current.right;
+            continue;
           }
         }
       }
