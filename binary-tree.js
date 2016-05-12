@@ -1,60 +1,33 @@
-class Node {
+class BinaryTree {
   constructor(val) {
+    this.value = val;
     this.left = null;
     this.right = null;
-    this.value = val;
   }
-  show() {
-    return this.value;
-  }
-}
-
-class BinaryTree {
-  constructor() {
-    this.root = null;
-  }
+  
   insert(val) {
-    let node =  new Node(val);
-
-    if (this.root === null) {
-      this.root = node;
-    } else {
-      let current = this.root;
-      while (true) {
-        if (val < current.value) {
-          if (current.left === null) {
-            current.left = node;
-            break;
-          } else {
-            current = current.left;
-            continue;
-          }
-        } else {
-          if (current.right === null) {
-            current.right = node;
-            break;
-          } else {
-            current = current.right;
-            continue;
-          }
-        }
+    if (val < this.value) {
+      if (this.left === null) {
+        this.left = new BinaryTree(val);
+      } else {
+        this.left.insert(val);
+      }
+    } else if (val > this.value) {
+      if (this.right === null) {
+        this.right = new BinaryTree(val);
+      } else {
+        this.right.insert(val);
       }
     }
   }
-  contains(target) {
-    let current = this.root;
-    while (true) {
-      if (current.value === target) {
-        return true;
-      } else if (target < current.value && current.left !== null) {
-        current = current.left;
-        continue;
-      } else if (target > current.value && current.right !== null) {
-        current = current.right;
-        continue;
-      }
-      break;
-    }
-    return false;
+  
+  DFS(callback) {
+   callback(this.value);
+   if (this.left) {
+     this.left.DFS(callback);
+   }
+   if (this.right) {
+     this.right.DFS(callback);
+   }
   }
 }
