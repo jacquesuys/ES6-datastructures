@@ -30,4 +30,24 @@ class BinaryTree {
      this.right.DFS(callback);
    }
   }
+
+  contains(target) {
+    var current = this;
+    while (current.value !== undefined) {
+      if (target === current.value) {
+        return true;
+      }
+      if (target < current.value) {
+        if (current.left == null) break;
+        current = current.left;
+        continue;
+      }
+      if (target > current.value) {
+        if (current.right == null) break;
+        current = current.right;
+        continue;
+      }
+    }
+    return false;
+  }
 }
