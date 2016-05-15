@@ -4,7 +4,6 @@ class BinaryTree {
     this.left = null;
     this.right = null;
   }
-  
   insert(val) {
     if (val < this.value) {
       if (this.left === null) {
@@ -20,7 +19,6 @@ class BinaryTree {
       }
     }
   }
-  
   DFS(callback) {
    callback(this.value);
    if (this.left) {
@@ -30,7 +28,6 @@ class BinaryTree {
      this.right.DFS(callback);
    }
   }
-
   contains(target) {
     var current = this;
     while (current.value !== undefined) {
