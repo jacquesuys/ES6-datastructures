@@ -4,8 +4,7 @@ class Graph {
     this.edges = 0;
     this.adj = [];
     for (let i = 0; i < this.vertices; ++i) {
-      this.adj[i] = [];
-      this.adj[i].push(""); 
+      this.adj[i] = [""];
     } 
   }
   addEdge(v, w) {
