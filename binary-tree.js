@@ -4,47 +4,37 @@ class BinaryTree {
     this.left = null;
     this.right = null;
   }
+
   insert(val) {
-    if (val < this.value) {
-      if (this.left === null) {
-        this.left = new BinaryTree(val);
-      } else {
-        this.left.insert(val);
-      }
-    } else if (val > this.value) {
-      if (this.right === null) {
-        this.right = new BinaryTree(val);
-      } else {
-        this.right.insert(val);
-      }
+    let dir = val < this.val ? 'left' : 'right';
+    
+    if (this[dir] === null) {
+      this[dir] = new BinaryTree(val);
+    } else {
+      this[dir].insert(val);
     }
   }
+
   DFS(callback) {
-   callback(this.value);
-   if (this.left) {
-     this.left.DFS(callback);
-   }
-   if (this.right) {
-     this.right.DFS(callback);
-   }
+    callback(this.value);
+    if (this.left) this.left.DFS(callback);
+    if (this.right) this.right.DFS(callback);
   }
+
   contains(target) {
-    var current = this;
+    let current = this;
+
     while (current.value !== undefined) {
-      if (target === current.value) {
-        return true;
-      }
-      if (target < current.value) {
-        if (current.left == null) break;
-        current = current.left;
-        continue;
-      }
-      if (target > current.value) {
-        if (current.right == null) break;
-        current = current.right;
-        continue;
-      }
+      if (target === current.value) return true;
+
+      let dir = target < current.value ? 'left' : 'right';
+
+      if (current[dir] === null) break;
+
+      current = current[dir];
+      continue;
     }
+
     return false;
   }
 }
